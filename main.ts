@@ -25,5 +25,7 @@ case 82:D[s++]=i<X.length?X[i++]:-1;break
 case 83:return x&255
 default:if(c>18&c<23&!x)return 4
 D[s-2]=[y+x,y-x,Math.imul(y,x),y/x,y%x,u/v,u%v,,y&x,y|x,y^x,,y<<w,y>>w,y>>>w,,y==x,y<x,u<v][c-16];s--}}}
-for(id of f.readdirSync('/input')){d='/input/'+id+'/';P=f.readFileSync(d+'program.bin');X=f.readFileSync(d+'input.bin');o=[]
-e=R();f.mkdirSync(d='/output/'+id,{recursive:!0});f.writeFileSync(d+'/stdout.bin',Buffer.from(o));f.writeFileSync(d+'/exit.txt',e+'')}
+// anomalies: a missing/unreadable file reads as empty (no program traps 9), one bad instance never stops the rest
+r=n=>{try{return f.readFileSync(d+n)}catch{return Buffer.alloc(0)}}
+for(id of f.readdirSync('/input').sort())try{d='/input/'+id+'/';P=r('program.bin');X=r('input.bin');o=[]
+e=R();f.mkdirSync(d='/output/'+id,{recursive:!0});f.writeFileSync(d+'/stdout.bin',Buffer.from(o));f.writeFileSync(d+'/exit.txt',e+'')}catch{}
